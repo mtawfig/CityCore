@@ -1,0 +1,54 @@
+21 Dec 2018 21:10:11,157 [12712] ERROR ErrorLog - System.Exception: InvalidOperationException ---> System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   --- End of inner exception stack trace ---
+   at CityCore.Modules.Projects.List.Page_Load(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\List.aspx.cs:line 23
+21 Dec 2018 21:10:13,584 [17584] ERROR ErrorLog - System.Exception: InvalidOperationException ---> System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   --- End of inner exception stack trace ---
+   at CityCore.Modules.Projects.List.Page_Load(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\List.aspx.cs:line 23
+21 Dec 2018 21:31:49,748 [16848] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at CityCore.Modules.Projects.AddEdit.Page_Load(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 35
+21 Dec 2018 21:33:11,347 [11932] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at CityCore.Modules.Projects.AddEdit.Page_Load(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 35
+21 Dec 2018 21:44:20,917 [14552] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at CityCore.Modules.Projects.AddEdit.SaveClick(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 145
+21 Dec 2018 21:44:26,872 [14552] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at CityCore.Modules.Projects.AddEdit.SaveClick(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 145
+21 Dec 2018 21:47:12,131 [15604] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at CityCore.Modules.Projects.AddEdit.SaveClick(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 145
+21 Dec 2018 22:25:14,407 [6576] ERROR ErrorLog - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse)
+   at CityCore.Modules.Projects.AddEdit.SaveClick(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\AddEdit.aspx.cs:line 153

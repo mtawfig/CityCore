@@ -1,0 +1,3 @@
+21 Dec 2018 21:09:05,055 [3196] ERROR ErrorLog - System.Exception: InvalidOperationException ---> System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   --- End of inner exception stack trace ---
+   at CityCore.Modules.Projects.List.Page_Load(Object sender, EventArgs e) in C:\Users\Dell\source\repos\CityCore\CityCore\Modules\Projects\List.aspx.cs:line 23

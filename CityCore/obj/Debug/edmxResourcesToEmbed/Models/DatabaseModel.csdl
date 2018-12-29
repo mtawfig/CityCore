@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CityCoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CityCoreDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="COMPANies" EntityType="CityCoreDBModel.COMPANY" />
+    <EntitySet Name="EMPLOYEEs" EntityType="CityCoreDBModel.EMPLOYEE" />
+    <EntitySet Name="PROJECTs" EntityType="CityCoreDBModel.PROJECT" />
+    <EntitySet Name="PROJECT_TASK" EntityType="CityCoreDBModel.PROJECT_TASK" />
+    <EntitySet Name="PROJECT_TASK_DOC" EntityType="CityCoreDBModel.PROJECT_TASK_DOC" />
+    <EntitySet Name="TASKs" EntityType="CityCoreDBModel.TASK" />
+    <EntitySet Name="TASK_RELATED_DOC" EntityType="CityCoreDBModel.TASK_RELATED_DOC" />
+    <AssociationSet Name="FK_EMPLOYEE_COMPANY" Association="CityCoreDBModel.FK_EMPLOYEE_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_COMPANY" Association="CityCoreDBModel.FK_PROJECT_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="PROJECT" EntitySet="PROJECTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_COMPANY" Association="CityCoreDBModel.FK_PROJECT_TASK_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="PROJECT_TASK" EntitySet="PROJECT_TASK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_DOC_COMPANY" Association="CityCoreDBModel.FK_PROJECT_TASK_DOC_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="PROJECT_TASK_DOC" EntitySet="PROJECT_TASK_DOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_MD" Association="CityCoreDBModel.FK_PROJECT_MD">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="PROJECT" EntitySet="PROJECTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_PM" Association="CityCoreDBModel.FK_PROJECT_PM">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="PROJECT" EntitySet="PROJECTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_EMPLOYEE" Association="CityCoreDBModel.FK_PROJECT_TASK_EMPLOYEE">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="PROJECT_TASK" EntitySet="PROJECT_TASK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_PROJECT" Association="CityCoreDBModel.FK_PROJECT_TASK_PROJECT">
+      <End Role="PROJECT" EntitySet="PROJECTs" />
+      <End Role="PROJECT_TASK" EntitySet="PROJECT_TASK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_DOC_PROJECT_TASK" Association="CityCoreDBModel.FK_PROJECT_TASK_DOC_PROJECT_TASK">
+      <End Role="PROJECT_TASK" EntitySet="PROJECT_TASK" />
+      <End Role="PROJECT_TASK_DOC" EntitySet="PROJECT_TASK_DOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_TASK" Association="CityCoreDBModel.FK_PROJECT_TASK_TASK">
+      <End Role="TASK" EntitySet="TASKs" />
+      <End Role="PROJECT_TASK" EntitySet="PROJECT_TASK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_TASK_DOC_TASK_RELATED_DOC" Association="CityCoreDBModel.FK_PROJECT_TASK_DOC_TASK_RELATED_DOC">
+      <End Role="TASK_RELATED_DOC" EntitySet="TASK_RELATED_DOC" />
+      <End Role="PROJECT_TASK_DOC" EntitySet="PROJECT_TASK_DOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TASK_RELATED_DOC_TASK" Association="CityCoreDBModel.FK_TASK_RELATED_DOC_TASK">
+      <End Role="TASK" EntitySet="TASKs" />
+      <End Role="TASK_RELATED_DOC" EntitySet="TASK_RELATED_DOC" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="COMPANY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LOGO_URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IS_ACTIVE" Type="Boolean" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="CityCoreDBModel.FK_EMPLOYEE_COMPANY" FromRole="COMPANY" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="PROJECTs" Relationship="CityCoreDBModel.FK_PROJECT_COMPANY" FromRole="COMPANY" ToRole="PROJECT" />
+    <NavigationProperty Name="PROJECT_TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_COMPANY" FromRole="COMPANY" ToRole="PROJECT_TASK" />
+    <NavigationProperty Name="PROJECT_TASK_DOC" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_COMPANY" FromRole="COMPANY" ToRole="PROJECT_TASK_DOC" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FULLNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LOCAL_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="COUNTRY_PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ROLE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IS_ACTIVE" Type="Boolean" />
+    <Property Name="IS_ADMIN" Type="Boolean" />
+    <Property Name="COMPANY_ID" Type="Int32" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="COMPANY" Relationship="CityCoreDBModel.FK_EMPLOYEE_COMPANY" FromRole="EMPLOYEE" ToRole="COMPANY" />
+    <NavigationProperty Name="PROJECTs" Relationship="CityCoreDBModel.FK_PROJECT_MD" FromRole="EMPLOYEE" ToRole="PROJECT" />
+    <NavigationProperty Name="PROJECTs1" Relationship="CityCoreDBModel.FK_PROJECT_PM" FromRole="EMPLOYEE" ToRole="PROJECT" />
+    <NavigationProperty Name="PROJECT_TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_EMPLOYEE" FromRole="EMPLOYEE" ToRole="PROJECT_TASK" />
+  </EntityType>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ADM_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FILE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LANDLORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TENANT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PROPERTY_MNGR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AREA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SECTOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PLOT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UNIT_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PROJECT_MGR" Type="Int32" />
+    <Property Name="MANAGING_DIRECTOR" Type="Int32" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="COMPANY_ID" Type="Int32" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="COMPANY" Relationship="CityCoreDBModel.FK_PROJECT_COMPANY" FromRole="PROJECT" ToRole="COMPANY" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="CityCoreDBModel.FK_PROJECT_MD" FromRole="PROJECT" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="EMPLOYEE1" Relationship="CityCoreDBModel.FK_PROJECT_PM" FromRole="PROJECT" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="PROJECT_TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_PROJECT" FromRole="PROJECT" ToRole="PROJECT_TASK" />
+  </EntityType>
+  <EntityType Name="PROJECT_TASK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROJECT_ID" Type="Int32" />
+    <Property Name="TASK_ID" Type="Int32" />
+    <Property Name="ASSIGNED_TO" Type="Int32" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="COMPANY_ID" Type="Int32" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="COMPANY" Relationship="CityCoreDBModel.FK_PROJECT_TASK_COMPANY" FromRole="PROJECT_TASK" ToRole="COMPANY" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="CityCoreDBModel.FK_PROJECT_TASK_EMPLOYEE" FromRole="PROJECT_TASK" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="PROJECT" Relationship="CityCoreDBModel.FK_PROJECT_TASK_PROJECT" FromRole="PROJECT_TASK" ToRole="PROJECT" />
+    <NavigationProperty Name="PROJECT_TASK_DOC" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_PROJECT_TASK" FromRole="PROJECT_TASK" ToRole="PROJECT_TASK_DOC" />
+    <NavigationProperty Name="TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_TASK" FromRole="PROJECT_TASK" ToRole="TASK" />
+  </EntityType>
+  <EntityType Name="PROJECT_TASK_DOC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROJECT_TASK_ID" Type="Int32" />
+    <Property Name="DOC_ID" Type="Int32" />
+    <Property Name="DOC_URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NOTES" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="COMPANY_ID" Type="Int32" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="COMPANY" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_COMPANY" FromRole="PROJECT_TASK_DOC" ToRole="COMPANY" />
+    <NavigationProperty Name="PROJECT_TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_PROJECT_TASK" FromRole="PROJECT_TASK_DOC" ToRole="PROJECT_TASK" />
+    <NavigationProperty Name="TASK_RELATED_DOC" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_TASK_RELATED_DOC" FromRole="PROJECT_TASK_DOC" ToRole="TASK_RELATED_DOC" />
+  </EntityType>
+  <EntityType Name="TASK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PARENT_TASK_ID" Type="Int32" />
+    <Property Name="NAME_EN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NAME_AR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IS_ACTIVE" Type="Boolean" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PROJECT_TASK" Relationship="CityCoreDBModel.FK_PROJECT_TASK_TASK" FromRole="TASK" ToRole="PROJECT_TASK" />
+    <NavigationProperty Name="TASK_RELATED_DOC" Relationship="CityCoreDBModel.FK_TASK_RELATED_DOC_TASK" FromRole="TASK" ToRole="TASK_RELATED_DOC" />
+  </EntityType>
+  <EntityType Name="TASK_RELATED_DOC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TASK_ID" Type="Int32" />
+    <Property Name="DOC_NAME_EN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DOC_NAME_AR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RELATED_TO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IS_ACTIVE" Type="Boolean" />
+    <Property Name="CREATE_BY" Type="Int32" />
+    <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_BY" Type="Int32" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="DELETE_BY" Type="Int32" />
+    <Property Name="DELETE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PROJECT_TASK_DOC" Relationship="CityCoreDBModel.FK_PROJECT_TASK_DOC_TASK_RELATED_DOC" FromRole="TASK_RELATED_DOC" ToRole="PROJECT_TASK_DOC" />
+    <NavigationProperty Name="TASK" Relationship="CityCoreDBModel.FK_TASK_RELATED_DOC_TASK" FromRole="TASK_RELATED_DOC" ToRole="TASK" />
+  </EntityType>
+  <Association Name="FK_EMPLOYEE_COMPANY">
+    <End Type="CityCoreDBModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_COMPANY">
+    <End Type="CityCoreDBModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT" Role="PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_COMPANY">
+    <End Type="CityCoreDBModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK" Role="PROJECT_TASK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_DOC_COMPANY">
+    <End Type="CityCoreDBModel.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK_DOC" Role="PROJECT_TASK_DOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK_DOC">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_MD">
+    <End Type="CityCoreDBModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT" Role="PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT">
+        <PropertyRef Name="MANAGING_DIRECTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_PM">
+    <End Type="CityCoreDBModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT" Role="PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT">
+        <PropertyRef Name="PROJECT_MGR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_EMPLOYEE">
+    <End Type="CityCoreDBModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK" Role="PROJECT_TASK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK">
+        <PropertyRef Name="ASSIGNED_TO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_PROJECT">
+    <End Type="CityCoreDBModel.PROJECT" Role="PROJECT" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK" Role="PROJECT_TASK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJECT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_DOC_PROJECT_TASK">
+    <End Type="CityCoreDBModel.PROJECT_TASK" Role="PROJECT_TASK" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK_DOC" Role="PROJECT_TASK_DOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJECT_TASK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK_DOC">
+        <PropertyRef Name="PROJECT_TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_TASK">
+    <End Type="CityCoreDBModel.TASK" Role="TASK" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK" Role="PROJECT_TASK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_TASK_DOC_TASK_RELATED_DOC">
+    <End Type="CityCoreDBModel.TASK_RELATED_DOC" Role="TASK_RELATED_DOC" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.PROJECT_TASK_DOC" Role="PROJECT_TASK_DOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK_RELATED_DOC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PROJECT_TASK_DOC">
+        <PropertyRef Name="DOC_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TASK_RELATED_DOC_TASK">
+    <End Type="CityCoreDBModel.TASK" Role="TASK" Multiplicity="0..1" />
+    <End Type="CityCoreDBModel.TASK_RELATED_DOC" Role="TASK_RELATED_DOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TASK_RELATED_DOC">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
